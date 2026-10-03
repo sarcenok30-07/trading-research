@@ -1,0 +1,27 @@
+# Optional: for Linux users who want the collector managed by systemd
+# instead of run_collector.sh (survives reboots, integrates with
+# `journalctl`, standard service management).
+#
+# Setup:
+#   1. Edit WorkingDirectory and User below to match your setup.
+#   2. sudo cp sol-bot-collector.service /etc/systemd/system/
+#   3. sudo systemctl daemon-reload
+#   4. sudo systemctl enable --now sol-bot-collector
+#   5. Check status: systemctl status sol-bot-collector
+#      Check logs:   journalctl -u sol-bot-collector -f
+
+[Unit]
+Description=Solana bot price history collector
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=YOUR_USERNAME
+WorkingDirectory=/path/to/sol-bot
+ExecStart=/usr/bin/python3 collect_history.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

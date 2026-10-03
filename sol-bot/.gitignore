@@ -1,0 +1,12 @@
+.env
+venv/
+__pycache__/
+*.pyc
+trade_log.json
+STOP
+wallet.enc
+wallet.salt
+price_history_*.csv
+collector.log
+collector_wrapper.log
+collector.pid

@@ -1,0 +1,34 @@
+# Secrets — never commit
+.env
+*.enc
+*.salt
+*.pem
+*.key
+wallet.enc
+wallet.salt
+
+# Environments
+venv/
+.venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+
+# Collected data and runtime state
+price_history_*.csv
+price_history_*.csv.gz
+trade_log.json
+trade_log.json.bak
+copytrader_state.json
+collector.log
+collector_wrapper.log
+maintenance.log
+collector.pid
+STOP
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp

@@ -1,0 +1,26 @@
+# For running the dashboard permanently, same pattern as
+# sol-bot-collector.service. Edit User/WorkingDirectory to match your
+# setup before installing.
+#
+# Setup:
+#   1. Edit WorkingDirectory and User below.
+#   2. sudo cp sol-bot-dashboard.service /etc/systemd/system/
+#   3. sudo systemctl daemon-reload
+#   4. sudo systemctl enable --now sol-bot-dashboard
+#   5. Check status: systemctl status sol-bot-dashboard
+
+[Unit]
+Description=Solana bot live dashboard
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=YOUR_USERNAME
+WorkingDirectory=/path/to/sol-bot
+ExecStart=/path/to/sol-bot/venv/bin/python3 dashboard.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
